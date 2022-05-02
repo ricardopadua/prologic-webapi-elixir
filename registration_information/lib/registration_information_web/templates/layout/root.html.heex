@@ -8,6 +8,7 @@
     <%= csrf_meta_tag() %>
     <%= live_title_tag assigns[:page_title] || "RegistryInformationService", suffix: " · Phoenix Framework" %>
 
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/style.css")}/>
     <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
     
@@ -18,11 +19,13 @@
     
     <title>Dashboard Sidebar Menu</title> 
 </head>
+<style>
+.sidenav {
+  position: fixed;
+  z-index: 1;
+}
+</style>
 <body>
-
-
-
-
 <div>
     <!-- Sidebar backdrop (mobile only) -->
     <div
@@ -35,7 +38,7 @@
     <!-- Sidebar -->
     <div
         id="sidebar"
-        class="flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 transform h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-gray-800 p-4 transition-all duration-200 ease-in-out"
+        class="sidenav flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 transform h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-gray-800 p-4 transition-all duration-200 ease-in-out"
         :class="sidebarOpen ? 'translate-x-0' : '-translate-x-64'"
         @click.outside="sidebarOpen = false"
         @keydown.escape.window="sidebarOpen = false"
@@ -583,7 +586,7 @@
 
     </div>
 </div>
-    <section class="home">
+    <section class="">
         <div><%= @inner_content %></div>
     </section>
 </body>
